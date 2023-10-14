@@ -1,0 +1,18 @@
+{% extends "base.html" %} 
+
+<head>
+    <title>Chat Room</title>
+</head>
+
+{% block content %}
+    <h1>{{ channel.id }}</h1>
+    {% for message in messages %}
+        <p><strong>{{ message.user.username }}:</strong>{{ message.content }}</p>
+    {% endfor %}
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="content"></textarea>
+        <button type="submit">Send</button>
+    </form>
+{% endblock %}
+
